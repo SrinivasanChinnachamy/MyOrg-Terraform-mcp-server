@@ -1,10 +1,10 @@
-# srini-terraform-mcp-server
+# MyOrg-Terraform-mcp-server
 
-MCP server that connects Kiro to your private Terraform module registry on GitHub.
+MCP server that connects Kiro to your private Organisational Terraform module registry on GitHub.
 
 ## What it does
 
-- **search_modules** — Discover modules matching `srini-terraform-aws-*` repos
+- **search_modules** — Discover modules matching `myorg-terraform-aws-*` repos
 - **get_module** — Fetch variables, outputs, and README for a module
 - **scaffold_terraform** — Generate a full Terraform config (main.tf, backend.tf, etc.)
 - **list_module_versions** — List available git tags for a module
@@ -38,7 +38,7 @@ Update these values:
 
 ```bash
 cd terraform-module-mcp-server
-uv run srini-terraform-mcp-server
+uv run myorg-terraform-mcp-server
 ```
 
 ## Usage in Kiro
