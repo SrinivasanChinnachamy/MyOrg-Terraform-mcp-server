@@ -1,5 +1,5 @@
 [project]
-name = "srini-terraform-mcp-server"
+name = "myorg-terraform-mcp-server"
 version = "0.1.0"
 description = "MCP server for discovering and scaffolding Terraform modules from private GitHub repos"
 requires-python = ">=3.10"
@@ -14,4 +14,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
-srini-terraform-mcp-server = "srini_terraform_mcp_server.server:main"
+myorg-terraform-mcp-server = "myorg_terraform_mcp_server.server:main"
