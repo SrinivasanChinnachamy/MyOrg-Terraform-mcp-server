@@ -1,6 +1,6 @@
 """
 MCP Server for discovering and scaffolding Terraform modules
-from private GitHub repos following the srini-terraform-aws-* naming convention.
+from private GitHub repos following the myorg-terraform-aws-* naming convention.
 """
 
 import json
@@ -17,7 +17,7 @@ from mcp.server.fastmcp import FastMCP
 # ---------------------------------------------------------------------------
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_ORG = os.environ.get("GITHUB_ORG", "")  # org or user
-MODULE_PREFIX = os.environ.get("MODULE_PREFIX", "srini-terraform-aws-")
+MODULE_PREFIX = os.environ.get("MODULE_PREFIX", "myorg-terraform-aws-")
 GITHUB_API = "https://api.github.com"
 
 # ---------------------------------------------------------------------------
@@ -26,7 +26,7 @@ GITHUB_API = "https://api.github.com"
 REQUIRED_TAGS = ["Environment", "Team", "CostCenter"]
 TF_MIN_VERSION = os.environ.get("TF_MIN_VERSION", "1.14")
 
-mcp = FastMCP("srini-terraform-mcp-server")
+mcp = FastMCP("myorg-terraform-mcp-server")
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -41,7 +41,7 @@ def _headers() -> dict[str, str]:
 
 
 def _service_name_from_repo(repo_name: str) -> str:
-    """Extract the AWS service name from a repo name like srini-terraform-aws-vpc."""
+    """Extract the AWS service name from a repo name like myorg-terraform-aws-vpc."""
     return repo_name.replace(MODULE_PREFIX, "")
 
 
@@ -123,7 +123,7 @@ def _parse_outputs(content: str) -> list[dict]:
 async def search_modules(keyword: str = "") -> str:
     """Search available Terraform modules in the private GitHub registry.
 
-    Discovers repos matching the srini-terraform-aws-* naming convention.
+    Discovers repos matching the myorg-terraform-aws-* naming convention.
     Optionally filter by keyword (e.g., 'vpc', 'eks', 'rds').
 
     Args:
@@ -153,7 +153,7 @@ async def search_modules(keyword: str = "") -> str:
         })
 
     if not modules:
-        return json.dumps({"message": f"No modules found matching '{keyword}'", "modules": []})
+        return json.dumps({"message": f"No modules found matching '{keyword}'. Kindly reachout to platform engineering team[platform-team-dl@yourcompany.com] with a business/technical requirement to propose a new module request", "modules": []})
 
     return json.dumps({"count": len(modules), "modules": modules}, indent=2)
 
